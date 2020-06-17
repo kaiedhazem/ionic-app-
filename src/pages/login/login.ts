@@ -74,9 +74,7 @@ export class LoginPage {
     this. errorFunc('Please put a vaild password !  for ex:(123456)')
     }
 }
-register (){
-  this.navCtrl.push(RegisterPage)
-}
+
 myLogOut(){
   this.authService.logout();
 }

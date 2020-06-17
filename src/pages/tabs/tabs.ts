@@ -1,24 +1,33 @@
 import { Component } from '@angular/core';
 
-import { AboutPage } from '../about/about';
-import { ContactPage } from '../contact/contact';
+
 import { HomePage } from '../home/home';
 import { LoginPage } from '../login/login';
 import {  NavController } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
 import { RegisterPage } from '../register/register';
+import {ListePage} from '../liste/liste';
+import {ModifierPage} from '../modifier/modifier';
+
 @Component({
   templateUrl: 'tabs.html'
 })
 export class TabsPage {
 
   tab1Root = HomePage;
-  tab2Root = AboutPage;
-  tab3Root = ContactPage;
+  tab2Root = ModifierPage;
+  tab3Root = ListePage;
   tab4Root= LoginPage;
   tab5Root= RegisterPage;
+  user : any;
+  role : string;
   constructor(public navCtrl: NavController,public authService:AuthProvider) {
-
+    if (localStorage.token !=''){
+    this.authService.userconnecte().then((data)=>{
+           this.user=data["user"];
+           this.role = this.user.role;
+          })
+        }
   }
   myLogOut(){
     this.authService.logout();

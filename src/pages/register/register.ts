@@ -3,8 +3,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, AlertController } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
-import { LoginPage } from '../login/login';
 import { TabsPage } from '../tabs/tabs';
+import {ListePage} from '../liste/liste';
 /**
  * Generated class for the RegisterPage page.
  *
@@ -35,10 +35,15 @@ export class RegisterPage {
       this.authService.register(this.user).then(success => {
         if (success) {
           this.createSuccess = true;
-          this.showPopup("Success", "Account created.");
-          this.navCtrl.push(LoginPage);
+         // this.showPopup("Success", "Account created.");
+        
+          this.navCtrl.push(ListePage);
+          this.user.name ="";
+          this.user.email ="";
+          this.user.password ="";
         } else {
           this.showPopup("Error", "Problem creating account.");
+          
         }
       },
         error => {

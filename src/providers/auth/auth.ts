@@ -25,7 +25,7 @@ export class AuthProvider {
       headers.append('Accept','application/json');
       headers.append('Content-type','application/json');
        headers.append('X-Requested-With','XMLHttpRequest');
-        this.http.post('http://127.0.0.1:8001/api/auth/login', JSON.stringify(credentials), {headers: headers})
+        this.http.post('http://192.168.1.11:8000/api/auth/login', JSON.stringify(credentials), {headers: headers})
           .subscribe(res => {
             let data = res.json();
             this.token = data.token;
@@ -52,7 +52,40 @@ export class AuthProvider {
 
 
   }
+userconnecte(){
+  return new Promise((resolve, reject) => {
 
+    let value = localStorage.getItem('token')
+           let headers = new Headers();
+     headers.append('Access-Control-Allow-Origin' , '*');
+       headers.append('Accept','application/json');
+       headers.append('Authorization','Bearer '+value);
+         this.http.get('http://192.168.1.11:8000/api/userconnecte',{headers: headers})
+         .map(res=>res.json())
+         .subscribe(data => {
+             resolve(data);
+    }, (err) => {
+             reject(err);
+ 
+           });  });
+}
+membres(){
+  return new Promise((resolve, reject) => {
+
+    let value = localStorage.getItem('token')
+           let headers = new Headers();
+     headers.append('Access-Control-Allow-Origin' , '*');
+       headers.append('Accept','application/json');
+       headers.append('Authorization','Bearer '+value);
+         this.http.get('http://192.168.1.11:8000/api/membres',{headers: headers})
+         .map(res=>res.json())
+         .subscribe(data => {
+             resolve(data);
+    }, (err) => {
+             reject(err);
+ 
+           });  });
+}
   register(credentials){
     return new Promise((resolve, reject) => {
         let headers = new Headers();
@@ -62,7 +95,49 @@ export class AuthProvider {
       headers.append('Accept','application/json');
       headers.append('Content-type','application/json');
        headers.append('X-Requested-With','XMLHttpRequest');
-        this.http.post('http://127.0.0.1:8001/api/auth/register', JSON.stringify(credentials), {headers: headers})
+        this.http.post('http://192.168.1.11:8000/api/auth/register', JSON.stringify(credentials), {headers: headers})
+          .subscribe(res => {
+            let data = res.json();
+
+
+            resolve(data);
+   }, (err) => {
+            reject(err);
+
+          });  });
+
+  }
+  modifier(credentials,id){
+    return new Promise((resolve, reject) => {
+        let headers = new Headers();
+
+    headers.append('Access-Control-Allow-Origin' , '*');
+       headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
+      headers.append('Accept','application/json');
+      headers.append('Content-type','application/json');
+       headers.append('X-Requested-With','XMLHttpRequest');
+        this.http.post('http://192.168.1.11:8000/api/modifier/'+id, JSON.stringify(credentials), {headers: headers})
+          .subscribe(res => {
+            let data = res.json();
+
+
+            resolve(data);
+   }, (err) => {
+            reject(err);
+
+          });  });
+
+  }
+  supprimer(id){
+    return new Promise((resolve, reject) => {
+        let headers = new Headers();
+
+    headers.append('Access-Control-Allow-Origin' , '*');
+       headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
+      headers.append('Accept','application/json');
+      headers.append('Content-type','application/json');
+       headers.append('X-Requested-With','XMLHttpRequest');
+        this.http.delete('http://192.168.1.11:8000/api/users/'+id, {headers: headers})
           .subscribe(res => {
             let data = res.json();
 

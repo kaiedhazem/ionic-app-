@@ -4,8 +4,6 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { IonicStorageModule } from '@ionic/storage';
 import { HttpModule } from '@angular/http';
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
@@ -18,15 +16,20 @@ import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { Geolocation } from '@ionic-native/geolocation';
 import { AuthProvider } from '../providers/auth/auth';
 import { RegisterPage } from '../pages/register/register';
+import {ListePage} from '../pages/liste/liste';
+import { ModifierPage } from '../pages/modifier/modifier';
+import { Base64 } from '@ionic-native/base64';
+import { ImagePicker } from '@ionic-native/image-picker';
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
-    ContactPage,
+   
     HomePage,
     TabsPage,
     LoginPage,
     RegisterPage,
+    ListePage,
+    ModifierPage,
   ],
   imports: [
     BrowserModule,
@@ -37,16 +40,17 @@ import { RegisterPage } from '../pages/register/register';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
-    ContactPage,
+  
     HomePage,
     LoginPage,
     RegisterPage,
-    TabsPage
+    TabsPage,
+    ListePage,
+    ModifierPage,
   ],
   providers: [
     StatusBar,
-    SplashScreen,Camera, EmailComposer,File, WebView, Geolocation,
+    SplashScreen,Camera, EmailComposer,File, WebView, Geolocation,Base64,ImagePicker,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider
   ]

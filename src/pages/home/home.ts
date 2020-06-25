@@ -83,7 +83,7 @@ imageResponse: any;
 Send(){
   let email = {
     to: 'ndi.visite.technique@gmail.com',
-    cc: 'gaiedhazem@gmail.com',
+    
    
     attachments: [
     
@@ -91,7 +91,17 @@ Send(){
    this.imageResponse[1],
    this.imageResponse[2],
    this.imageResponse[3],
-   this.imageResponse[4],
+   this.imageResponse[5],
+   this.imageResponse[6],
+   this.imageResponse[7],
+   this.imageResponse[8],
+   this.imageResponse[9],
+   this.imageResponse[10],
+   this.imageResponse[11],
+   this.imageResponse[12],
+   this.imageResponse[13],
+   this.imageResponse[14],
+   this.imageResponse[15],
    this.capturedSnapURL,
    
     ],

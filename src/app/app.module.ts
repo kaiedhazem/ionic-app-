@@ -20,6 +20,9 @@ import {ListePage} from '../pages/liste/liste';
 import { ModifierPage } from '../pages/modifier/modifier';
 import { Base64 } from '@ionic-native/base64';
 import { ImagePicker } from '@ionic-native/image-picker';
+import { Calendar } from '@ionic-native/calendar';
+import { CalendrierPage} from '../pages/calendrier/calendrier';
+import { DetailscalendarPage } from '../pages/detailscalendar/detailscalendar';
 @NgModule({
   declarations: [
     MyApp,
@@ -30,6 +33,8 @@ import { ImagePicker } from '@ionic-native/image-picker';
     RegisterPage,
     ListePage,
     ModifierPage,
+    DetailscalendarPage,
+    CalendrierPage,
   ],
   imports: [
     BrowserModule,
@@ -47,12 +52,15 @@ import { ImagePicker } from '@ionic-native/image-picker';
     TabsPage,
     ListePage,
     ModifierPage,
+    DetailscalendarPage,
+    CalendrierPage,
   ],
   providers: [
     StatusBar,
     SplashScreen,Camera, EmailComposer,File, WebView, Geolocation,Base64,ImagePicker,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthProvider
+    AuthProvider,
+    Calendar
   ]
 })
 export class AppModule {}
